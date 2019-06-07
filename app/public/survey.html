@@ -28,7 +28,7 @@
                 type="text"
                 class="form-control"
                 id="name"
-                placeholder="Example input"
+                placeholder="Full Name"
               />
             </div>
             <div class="form-group">
@@ -39,7 +39,7 @@
                 type="text"
                 class="form-control"
                 id="photo"
-                placeholder="Another input"
+                placeholder="URL link"
               />
               <br />
               <br />
@@ -173,6 +173,27 @@
         </div>
       </div>
     </div>
+
+    <div id="results-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h2 class="modal-title"><strong>Best Match</strong></h2>
+          </div>
+          <div class="modal-body">
+            <h2 id="match-name"></h2>
+            <img id="match-img" height="200" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script
@@ -185,5 +206,35 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"
   ></script>
-  <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript">
+    $("#finish").on("click", function() {
+      console.log("click");
+      var friendProfile = {
+        name: $("#name").val(),
+        photo: $("#photo").val(),
+        scores: [
+          $("#q1").val(),
+          $("#q2").val(),
+          $("#q3").val(),
+          $("#q4").val(),
+          $("#q5").val(),
+          $("#q6").val(),
+          $("#q7").val(),
+          $("#q8").val(),
+          $("#q9").val()
+        ]
+      };
+
+      $.ajax("/api/data", {
+        type: "POST",
+        data: friendProfile
+      }).then(function(res) {
+        console.log(res);
+        alert("Info added!");
+        $("#match-name").text(res.name);
+        $("#match-img").attr("src", res.photo);
+        $("#results-modal").modal("toggle");
+      });
+    });
+  </script>
 </html>

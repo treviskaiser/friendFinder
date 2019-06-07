@@ -1,5 +1,3 @@
-var database = [];
-
 $("#finish").on("click", function() {
   console.log("click");
   var friendProfile = {
@@ -17,12 +15,11 @@ $("#finish").on("click", function() {
       $("#q9").val()
     ]
   };
-  console.log(friendProfile);
-  database.push(friendProfile);
-  console.log(database);
 
   $.ajax("/api/data", {
     type: "POST",
     data: friendProfile
-  }).then(function() {});
+  }).then(function(res) {
+    console.log(res);
+  });
 });
