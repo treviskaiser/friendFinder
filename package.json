@@ -2,28 +2,24 @@
   "name": "friendFinder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://treviskaiser.github.io/friendFinder/"
+    "url": "git+https://github.com/treviskaiser/friendFinder.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://treviskaiser.github.io/friendFinder/"
+    "url": "https://github.com/treviskaiser/friendFinder/issues"
   },
-  "homepage": "https://treviskaiser.github.io/friendFinder/",
+  "homepage": "https://github.com/treviskaiser/friendFinder#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "jquery": "^3.4.1",
-    "jshint": "^2.9.6",
-    "nodemon": "^1.18.3",
+    "express": "^4.17.1",
     "path": "^0.12.7"
   }
 }
